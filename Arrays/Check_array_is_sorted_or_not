@@ -1,0 +1,17 @@
+// Problem : checl array is sorted or not 
+// Platfrom : Takeuforward
+// Difficulty : Easy
+// TC : O(N)
+// SC : O(1)
+
+class Solution {
+    public boolean isSorted(ArrayList<Integer> nums) {
+        for(int i=0 ;i<nums.size()-1 ;i++) {
+            if(nums.get(i) > nums.get(i+1)) {
+                return false;
+            }
+            
+        }
+        return true;
+    }
+}
