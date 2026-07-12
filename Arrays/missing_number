@@ -1,0 +1,17 @@
+// Problem : find missing number in an array
+// Platform : Takeuforward
+// Difficulty : Easy
+// TC : O(N)
+// SC : O(1)
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int original = n*(n+1)/2;
+        int sum =0;
+        for(int i=1 ; i<= n; i++) {
+            sum += nums[i];
+        }
+        return original - sum;
+    }
+}
