@@ -1,0 +1,22 @@
+// Problem : find maximum consecutive ones 
+// Platform : Takeuforward
+// TC : O(N)
+// SC : O(1)
+
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count =0;
+        int maxi = 0;
+        for(int i=1 ;i<=nums.length;i++) {
+            if(nums[i] == 1) {
+                count++;
+                maxi = max(maxi, count);
+            }
+            else {
+                count =0;
+            }
+        }
+        return maxi;
+    }
+}
