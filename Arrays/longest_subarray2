@@ -1,0 +1,39 @@
+// Problem : longest subarray with sum (positives , negatives and zero ) as well 
+// Difficulty : medium 
+// TC : (n *log n)
+//SC : O(n)
+// Platform : Takeuforward
+
+class Solution {
+public:
+    int longestSubarray(vector<int> &nums, int k) {
+        map<long long, int> mp;
+
+        long long sum = 0;
+        int maxLen = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            sum += nums[i];
+
+            // If subarray starts from index 0
+            if (sum == k) {
+                maxLen = i + 1;
+            }
+
+            long long rem = sum - k;
+
+            // If (sum - k) exists, then subarray with sum k is found
+            if (mp.find(rem) != mp.end()) {
+                int len = i - mp[rem];
+                maxLen = max(maxLen, len);
+            }
+
+            // Store the first occurrence of each prefix sum
+            if (mp.find(sum) == mp.end()) {
+                mp[sum] = i;
+            }
+        }
+
+        return maxLen;
+    }
+};
