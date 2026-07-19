@@ -1,0 +1,56 @@
+// Problem : longest consecutive sequence 
+// Platform : Takeuforward
+// Brute force approach 
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        int longest = 1;
+        for(int i=0 ;i<nums.size();i++) {
+            int x = nums[i];
+            int count = 1;
+            while(linearsearch(nums,x+1)) {
+                x++;
+                count++;
+            }
+            longest = max(longest , count);
+        }
+        return longest;
+    }
+};
+// Optimal with TC : O(3n) Aand SC :O(1)
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+
+        unordered_set<int> st;
+
+        // Store all elements in the set
+        for (int i = 0; i < nums.size(); i++) {
+            st.insert(nums[i]);
+        }
+
+        int longest = 0;
+
+        // Traverse the set
+        for (auto it : st) {
+
+            // Check if it is the start of a sequence
+            if (st.find(it - 1) == st.end()) {
+
+                int count = 1;
+                int x = it;
+
+                // Count consecutive numbers
+                while (st.find(x + 1) != st.end()) {
+                    count++;
+                    x++;
+                }
+
+                longest = max(longest, count);
+            }
+        }
+
+        return longest;
+    }
+};
