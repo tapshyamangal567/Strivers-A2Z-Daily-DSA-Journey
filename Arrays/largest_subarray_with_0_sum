@@ -1,0 +1,28 @@
+// Problem : largest subarray with sum 0
+// Platform : TUF
+// Difficulty : hard
+// TC : O(n) and aSC : O(n)
+
+
+class Solution {
+  public:
+    int maxLen(vector<int>& arr) {
+        int sum =0;
+        int maxi =0;
+        map<int , int> mpp;
+        for(int i=0 ;i<nums.size();i++) {
+            sum += nums[i];
+
+            if(sum == 0) {
+                maxi = i+1;
+            }
+            if(mp.find(sum) != mp.end()) {
+                maxi = max(max , i-mp[sum]);
+            }
+            else {
+                mp[sum] = i;
+            }
+        }
+        return maxi;
+    }
+};
