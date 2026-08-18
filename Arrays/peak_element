@@ -1,0 +1,29 @@
+// Problem : find peak element 
+// Platform : leetcode 
+// TC : O(log n )
+
+
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        
+        int low = 0;
+        int high = nums.size() - 1;
+
+        while(low < high) {
+
+            int mid = low + (high - low) / 2;
+
+            if(nums[mid] < nums[mid + 1]) {
+                // Increasing → peak is on right
+                low = mid + 1;
+            }
+            else {
+                // Decreasing → peak is on left or mid
+                high = mid;
+            }
+        }
+
+        return low;
+    }
+};
