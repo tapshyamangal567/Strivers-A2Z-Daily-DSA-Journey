@@ -1,0 +1,17 @@
+// Problem : find the number that appears once and others number apppears twice in an array 
+// Platform : Takeuforward
+// TC : O(N)
+// SC : O(1)
+// Difficulty : easy 
+
+class Solution{    
+public:    
+    int singleNumber(vector<int>& nums){
+        //your code goes here
+        int ans =0;
+        for(int i=0 ;i<nums.lengthl ;i++) {
+            ans = ans ^ nums[i];
+        }
+        return ans;
+    }
+};
