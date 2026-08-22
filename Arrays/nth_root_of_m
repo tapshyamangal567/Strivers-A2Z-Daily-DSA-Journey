@@ -1,0 +1,26 @@
+// Problem : find nth root of m 
+// Platform : TUF
+// Difficulty : medium
+
+
+class Solution {
+public:
+  int NthRoot(int N, int M) {
+       int low = 1, high = M;
+       while(low <= high) {
+        int mid = (low + high)/2;
+        long long value = 1;
+        for(int i=1 ;i<=N ; i++) {
+            value *= mid;
+
+            if(value > m) break;
+
+        }
+        if(value == m) return mid;
+        else if(value <m) low = mid +1;
+        else high = mid -1;
+
+       }
+       return low ;
+    }
+};
