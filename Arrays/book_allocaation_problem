@@ -1,0 +1,36 @@
+// Problem : book allocation problem 
+// Platform : TUF
+
+class Solution {
+public:
+    int countstudents(vector<int> &a , int pages ) {
+        int students = 1;
+        long long pagestu =0;
+        for(int i=0 ;i<a.size();i++) {
+            if(a[i] + pagestu <= pages) {
+                pagestu += a[i];
+            }
+            else {
+                students++;
+                pagestu = a[i];
+            }
+        }
+       return students;
+    } 
+    int findPages(vector<int> &nums, int m)  {
+
+        int low = *max_element(nums.begin(),nums.end());
+        int high = accumulate(nums.begin() , nums.end(),0);
+        while(low <= high) {
+            int mid = (low + high)/2;
+            int students = countstudents(nums , mid);
+            if(students > m) {
+                low = mid +1;
+            }
+            else {
+                high = mid -1;
+            }
+        }
+        return low;
+    }
+};
